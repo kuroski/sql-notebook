@@ -1,30 +1,47 @@
 <template>
-  <div class="container">
-    <div>
-      <h1 class="title">
-        sql-notebook
-      </h1>
-      <h2 class="subtitle">
-        My divine Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div>
+    <el-form label-width="120px">
+      <el-form-item label="Query">
+        <el-input v-model="query" type="textarea"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="executeQuery">Query</el-button>
+      </el-form-item>
+    </el-form>
+
+    <el-table :data="tableData" stripe style="width: 100%">
+      <el-table-column
+        v-for="column in columns"
+        :key="column"
+        :prop="column"
+        :label="column"
+      >
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data: () => ({
+    query: 'SELECT * FROM `users`;',
+    tableData: [],
+    columns: []
+  }),
+  methods: {
+    executeQuery() {
+      this.$axios.$post('query', { query: this.query }).then(
+        (result) => {
+          this.tableData = result.results
+          this.columns = Object.keys(result.results[0])
+        },
+        (error) => {
+          console.error(error)
+        }
+      )
+    }
+  }
+}
 </script>
 
 <style>
