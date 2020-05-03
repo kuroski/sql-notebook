@@ -23,11 +23,15 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ['element-ui/lib/theme-chalk/index.css'],
+  css: ['~/assets/prism-vsc-dark-plus.css'],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/element-ui'],
+  plugins: [
+    '~/plugins/vue-prism',
+    '~/plugins/vue-json-tree-view',
+    { src: '~/plugins/vuex-persistedstate', ssr: false }
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -35,7 +39,8 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     // Doc: https://github.com/nuxt-community/stylelint-module
-    '@nuxtjs/stylelint-module'
+    '@nuxtjs/stylelint-module',
+    '@nuxtjs/vuetify'
   ],
   /*
    ** Nuxt.js modules
@@ -45,7 +50,8 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/toast'
   ],
   /*
    ** Axios module configuration
@@ -55,8 +61,10 @@ module.exports = {
   /*
    ** Build configuration
    */
+  vuetify: {
+    optionsPath: './vuetify.options.js'
+  },
   build: {
-    transpile: [/^element-ui/],
     /*
      ** You can extend webpack config here
      */
