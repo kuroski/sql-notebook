@@ -23,11 +23,19 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ['element-ui/lib/theme-chalk/index.css'],
+  css: [
+    'element-ui/lib/theme-chalk/index.css',
+    '~/assets/prism-vsc-dark-plus.css',
+    'element-theme-dark'
+  ],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/element-ui'],
+  plugins: [
+    '~/plugins/element-ui',
+    '~/plugins/vue-prism',
+    { src: '~/plugins/vuex-persistedstate', ssr: false }
+  ],
   /*
    ** Nuxt.js dev-modules
    */

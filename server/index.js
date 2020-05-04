@@ -12,16 +12,18 @@ const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
 
 app.post('/query', async (req, res) => {
-  const sequelize = new Sequelize('local', 'root', 'root', {
-    host: '127.0.0.1',
-    port: '32775',
-    dialect: 'mysql'
-  })
-
   try {
-    await sequelize.authenticate()
+    const { database, username, password, host, port } = req.body.connection
+    const sequelize = new Sequelize(database, username, password, {
+      host,
+      port: Number(port),
+      dialect: 'mysql'
+    })
+
     const query = req.body.query
     const [results, metadata] = await sequelize.query(query)
+    await sequelize.close()
+
     res.json({
       results,
       metadata
