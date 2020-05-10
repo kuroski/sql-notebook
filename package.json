@@ -10,7 +10,10 @@
     "start": "cross-env NODE_ENV=production node server/index.js",
     "generate": "nuxt generate",
     "lint": "eslint --ext .ts,.js,.vue .",
-    "test": "jest"
+    "test": "jest",
+    "test:e2e": "cypress run",
+    "test:e2e:open": "cypress open",
+    "test:e2e:ci": "start-server-and-test start http://localhost:3000 test:e2e"
   },
   "lint-staged": {
     "*.{js,vue}": "yarn lint",
@@ -46,9 +49,11 @@
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
+    "cypress": "^4.5.0",
     "element-theme-dark": "^1.0.3",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.0.0",
@@ -56,6 +61,7 @@
     "lint-staged": "^10.0.0",
     "nodemon": "^1.18.9",
     "prettier": "^1.19.1",
+    "start-server-and-test": "^1.11.0",
     "stylelint": "^10.1.0",
     "vue-jest": "^4.0.0-0"
   }
