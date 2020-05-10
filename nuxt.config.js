@@ -34,6 +34,7 @@ module.exports = {
   plugins: [
     '~/plugins/element-ui',
     '~/plugins/vue-prism',
+    '~/plugins/vue-json-tree-view',
     { src: '~/plugins/vuex-persistedstate', ssr: false }
   ],
   /*
