@@ -1,38 +1,34 @@
 <template>
-  <div>
-    <el-form label-width="0">
-      <el-form-item>
-        <prism-editor v-model="query" class="cell__editor" line-numbers />
-        <el-button
-          class="cell__query"
-          circle
-          icon="el-icon-caret-right"
-          :loading="isLoading"
-          :disabled="isLoading"
-          plain
-          @click="executeQuery"
-        />
-      </el-form-item>
-    </el-form>
+  <div class="flex-column cell">
+    <v-form label-width="0">
+      <prism-editor v-model="query" class="cell__editor" line-numbers />
 
-    <el-table
-      v-if="cell.data && cell.data.length"
-      :data="cell.data"
-      stripe
-      style="width: 100%; margin-bottom: 1rem;"
-    >
-      <el-table-column
-        v-for="column in columns"
-        :key="column"
-        :prop="column"
-        :label="column"
+      <v-btn
+        class="cell__query"
+        fab
+        x-small
+        :loading="isLoading"
+        :disabled="isLoading"
+        @click="executeQuery"
       >
-      </el-table-column>
-    </el-table>
+        <v-icon>mdi-play</v-icon>
+      </v-btn>
+    </v-form>
 
-    <el-card v-if="cell.error" class="cell__error">
-      <tree-view :data="cell.error" />
-    </el-card>
+    <v-data-table
+      v-if="cell.data && cell.data.length"
+      :items="cell.data"
+      :headers="columns"
+      disable-pagination
+      hide-default-footer
+      class="elevation-1"
+    ></v-data-table>
+
+    <v-card v-if="cell.error" outlined>
+      <v-card-text>
+        <tree-view :data="cell.error" />
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
@@ -55,7 +51,13 @@ export default {
       )
     },
     columns() {
-      return this.cell?.data.length && Object.keys(this.cell.data[0])
+      return (
+        this.cell?.data.length &&
+        Object.keys(this.cell.data[0]).map((key) => ({
+          text: key,
+          value: key
+        }))
+      )
     },
     query: {
       get() {
@@ -112,20 +114,30 @@ export default {
 </script>
 
 <style scoped>
+.cell > form {
+  position: relative;
+}
+
 .cell__editor {
+  position: relative;
   padding-right: 4rem;
   background-color: #1e1e1e;
   box-sizing: border-box;
   min-height: 3.5rem;
 }
 
+.cell__editor >>> pre > code {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.cell__editor >>> pre > code::before {
+  content: none;
+}
+
 .cell__query {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
-}
-
-.cell__error {
-  margin-bottom: 1rem;
 }
 </style>

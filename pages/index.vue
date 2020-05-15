@@ -1,11 +1,17 @@
 <template>
-  <div>
-    <el-row v-for="cell in cells" :key="cell.uuid">
-      <Cell :uuid="cell.uuid" />
-    </el-row>
-    <el-button @click="addCell">
-      <i class="el-icon-circle-plus" />
-    </el-button>
+  <div class="notebook align-self-start flex-column">
+    <Cell
+      v-for="cell in cells"
+      :key="cell.uuid"
+      class="notebook__cell"
+      :uuid="cell.uuid"
+    />
+
+    <v-row>
+      <v-btn @click="addCell">
+        <v-icon>mdi-table-plus</v-icon>
+      </v-btn>
+    </v-row>
   </div>
 </template>
 
@@ -27,3 +33,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.notebook {
+  width: 100%;
+}
+
+.notebook__cell:not(:first-child) {
+  margin-top: 1rem;
+}
+</style>

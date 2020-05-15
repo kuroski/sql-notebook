@@ -1,12 +1,15 @@
 <template>
-  <el-container>
-    <el-header>
+  <v-app>
+    <v-app-bar app clipped-left>
       <Connection />
-    </el-header>
-    <el-main>
-      <nuxt />
-    </el-main>
-  </el-container>
+    </v-app-bar>
+
+    <v-content>
+      <v-container class="fill-height" fluid>
+        <nuxt />
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 <script>

@@ -1,38 +1,38 @@
 <template>
   <div>
-    <el-button
+    <v-btn
       type="primary"
-      icon="el-icon-connection"
+      icon="v-icon-connection"
       circle
       @click="isOpen = true"
-    ></el-button>
+    ></v-btn>
 
-    <el-dialog title="Connection" :visible.sync="isOpen">
-      <el-form>
-        <el-form-item label="Host">
-          <el-input v-model="host" />
-        </el-form-item>
+    <v-dialog title="Connection" :visible.sync="isOpen">
+      <v-form>
+        <v-form-item label="Host">
+          <v-input v-model="host" />
+        </v-form-item>
 
-        <el-form-item label="Database">
-          <el-input v-model="database" />
-        </el-form-item>
+        <v-form-item label="Database">
+          <v-input v-model="database" />
+        </v-form-item>
 
-        <el-form-item label="Port">
-          <el-input v-model="port" type="number" />
-        </el-form-item>
+        <v-form-item label="Port">
+          <v-input v-model="port" type="number" />
+        </v-form-item>
 
-        <el-form-item label="Username">
-          <el-input v-model="username" />
-        </el-form-item>
+        <v-form-item label="Username">
+          <v-input v-model="username" />
+        </v-form-item>
 
-        <el-form-item label="Password">
-          <el-input v-model="password" type="password" />
-        </el-form-item>
-      </el-form>
+        <v-form-item label="Password">
+          <v-input v-model="password" type="password" />
+        </v-form-item>
+      </v-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="isOpen = false">Close</el-button>
+        <v-btn @click="isOpen = false">Close</v-btn>
       </span>
-    </el-dialog>
+    </v-dialog>
   </div>
 </template>
 
