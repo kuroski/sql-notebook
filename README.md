@@ -1,6 +1,12 @@
 # sql-notebook
 
-> My divine Nuxt.js project
+![](https://github.com/kuroski/sql-notebook/workflows/End-to-end%20tests/badge.svg)
+
+> This is a study project
+
+Implementing a minimal SQL notebook.
+
+With this application, you can connect in a database, and see the query result on the fly.
 
 ## Build Setup
 
@@ -19,4 +25,23 @@ $ yarn start
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## Test
+
+```bash
+# start dev server
+$ yarn dev
+
+# run tests
+$ yarn test:e2e
+
+# or
+$ yarn test:e2e:open
+```
+
+## Goals
+
+- Learn more about E2E tests
+- Learn more about SSR
+- Implement a interface where you can connect multiple DB's and see query results
+- Implement a dynamic infterface where you can see tabular and graphics results of your query results
+- Implement SQL dumpß
