@@ -1,6 +1,12 @@
 <template>
   <div>
-    <v-btn type="primary" circle icon @click="isOpen = true">
+    <v-btn
+      id="cy-connections-button"
+      type="primary"
+      circle
+      icon
+      @click="isOpen = true"
+    >
       <v-icon>mdi-database</v-icon>
     </v-btn>
 
@@ -8,18 +14,36 @@
       <v-card>
         <v-card-title>
           <v-spacer />
-          <v-btn icon @click="isOpen = false">
+          <v-btn id="cy-connections-close-button" icon @click="isOpen = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </v-card-title>
 
         <v-card-text>
           <v-form>
-            <v-text-field v-model="host" label="Host" />
-            <v-text-field v-model="database" label="Database" />
-            <v-text-field v-model="port" label="Port" type="number" />
-            <v-text-field v-model="username" label="Username" />
-            <v-text-field v-model="password" label="Password" type="password" />
+            <v-text-field id="cy-host" v-model="host" label="Host" />
+            <v-text-field
+              id="cy-database"
+              v-model="database"
+              label="Database"
+            />
+            <v-text-field
+              id="cy-port"
+              v-model="port"
+              label="Port"
+              type="number"
+            />
+            <v-text-field
+              id="cy-username"
+              v-model="username"
+              label="Username"
+            />
+            <v-text-field
+              id="cy-password"
+              v-model="password"
+              label="Password"
+              type="password"
+            />
           </v-form>
         </v-card-text>
       </v-card>

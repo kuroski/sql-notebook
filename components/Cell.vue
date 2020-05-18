@@ -36,7 +36,7 @@
 
     <v-card v-if="cell.error" outlined>
       <v-card-text>
-        <tree-view :data="cell.error" />
+        <tree-view id="cy-tree-view" :data="cell.error" />
       </v-card-text>
     </v-card>
   </div>
