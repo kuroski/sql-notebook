@@ -25,12 +25,8 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-import Cell from '~/components/Cell'
 
 export default {
-  components: {
-    Cell
-  },
   computed: {
     ...mapState('notebook', {
       cells: 'cells'
